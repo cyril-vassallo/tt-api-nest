@@ -99,6 +99,7 @@ export class UserService {
         firstName: account.firstName,
         lastName: account.lastName,
         email: account.email,
+        password: account.password,
         job: account.job,
         description: account.description,
         photo: account.photo,

@@ -18,6 +18,7 @@ import { Task, TaskSchema } from './Schemas/task.schema';
 import { Github, GithubSchema } from './Schemas/github.schema';
 import { constants } from './Config/conf';
 import { FileController } from './Controllers/file.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { FileController } from './Controllers/file.controller';
       { name: Task.name, schema: TaskSchema },
       { name: Github.name, schema: GithubSchema },
     ]),
+    AuthModule,
   ],
   controllers: [
     HomeController,

@@ -6,6 +6,7 @@ import {
   Post,
   Patch,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { UsersAndMeta } from '../Types/types';
@@ -13,6 +14,7 @@ import { UserAndMeta } from '../Types/types';
 import { AccountDto } from '../dto/account.dto';
 import { UserDto } from '../dto/user.dto';
 import { UserService } from '../Services/user.service';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('/user')
 export class UserController {
@@ -21,9 +23,9 @@ export class UserController {
     private configService: ConfigService,
   ) {}
 
+  //TODO - deprecated need to update  route guards and fronted
   @Post('/login')
   async login(@Body() accountDto: AccountDto): Promise<UserAndMeta> {
-    console.log(accountDto);
     return {
       data: await this.usersService.findOneByAccount(accountDto),
       meta: {
@@ -46,6 +48,7 @@ export class UserController {
     };
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('/all')
   async getUsers(): Promise<UsersAndMeta> {
     return {

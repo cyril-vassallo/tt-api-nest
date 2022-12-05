@@ -1,6 +1,7 @@
 #!/bin/bash
 
 npm install
+npm install -g @nestjs/cli
 
 date=$(date)
 echo "*** npm version: $npmV ***" 

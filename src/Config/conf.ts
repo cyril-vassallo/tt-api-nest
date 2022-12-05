@@ -6,4 +6,6 @@ export const constants = {
   MONGODB_NAME: process.env.MONGODB_NAME,
   API_ENDPOINT: process.env.API_ENDPOINT,
   APP_ENDPOINT: process.env.APP_ENDPOINT,
+  JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+  JWT_EXPIRE_IN: process.env.JWT_EXPIRE_IN,
 };
