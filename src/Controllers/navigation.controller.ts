@@ -1,8 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
 import { NavigationService } from '../Services/navigation.service';
 import { ConfigService } from '@nestjs/config';
 import { NavigationAndMeta } from '../Types/types';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('/navigation')
 export class NavigationController {
   constructor(

@@ -16,6 +16,7 @@ import { UserDto } from '../dto/user.dto';
 import { UserService } from '../Services/user.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('/user')
 export class UserController {
   constructor(
@@ -48,7 +49,6 @@ export class UserController {
     };
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('/all')
   async getUsers(): Promise<UsersAndMeta> {
     return {

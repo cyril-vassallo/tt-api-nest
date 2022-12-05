@@ -1,9 +1,19 @@
-import { Body, Controller, Get, Param, Post, Patch } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Patch,
+  UseGuards,
+} from '@nestjs/common';
 import { GithubService } from '../Services/github.service';
 import { GithubAndMeta } from '../Types/types';
 import { ConfigService } from '@nestjs/config';
 import { GithubDto } from '../dto/githubDto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('/github')
 export class GithubController {
   constructor(

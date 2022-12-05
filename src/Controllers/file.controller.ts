@@ -3,6 +3,7 @@ import {
   Controller,
   Post,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -12,7 +13,9 @@ import { diskStorage } from 'multer';
 import { constants } from 'src/Config/conf';
 import { FileUrlAndMeta } from 'src/Types/types';
 import { imageFileFilter, getFileName } from '../Decorators/multer-validations';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('/file')
 export class FileController {
   constructor(private configService: ConfigService) {}

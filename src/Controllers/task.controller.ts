@@ -6,12 +6,15 @@ import {
   Post,
   Delete,
   Patch,
+  UseGuards,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TasksAndMeta, TaskAndMeta, IdAndMeta } from '../Types/types';
 import { TaskService } from '../Services/task.service';
 import { TaskDto } from '../dto/task.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('/task')
 export class TaskController {
   constructor(
