@@ -7,6 +7,7 @@ import {
   Patch,
   Delete,
   UseGuards,
+  Request,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { UsersAndMeta } from '../Types/types';
@@ -69,6 +70,18 @@ export class UserController {
         method: 'GET',
         urn: 'user/' + userId,
         uri: this.configService.get<string>('API_ENDPOINT') + '/user/' + userId,
+      },
+    };
+  }
+
+  @Get()
+  async getUserByToken(@Request() req): Promise<UserAndMeta> {
+    return {
+      data: await this.usersService.findOneById(req.user.id),
+      meta: {
+        method: 'GET',
+        urn: 'user',
+        uri: this.configService.get<string>('API_ENDPOINT') + '/user',
       },
     };
   }

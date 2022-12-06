@@ -8,6 +8,15 @@ export class HomeService {
 
   getFeatures(): FeaturesInterface {
     return {
+      auth: [
+        {
+          title: 'Authentication',
+          url: this.configService.get<string>('API_ENDPOINT') + '/auth/login',
+          method: 'POST',
+          description:
+            'Get a JWT Token with a given JSON payload email and password',
+        },
+      ],
       user: [
         {
           title: 'User login',
@@ -22,6 +31,12 @@ export class HomeService {
           method: 'GET',
           description:
             'Get an user with a specific id provided in url parm except login information',
+        },
+        {
+          title: 'Get one user by token',
+          url: this.configService.get<string>('API_ENDPOINT') + '/user',
+          method: 'GET',
+          description: 'Get an user with a valid user token',
         },
         {
           title: 'Get all users',

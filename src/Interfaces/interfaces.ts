@@ -20,6 +20,7 @@ export interface FeaturesInterface {
   task: FeatureInterface[];
   github: FeatureInterface[];
   file: FeatureInterface[];
+  auth: FeatureInterface[];
 }
 
 export interface FileUrlDataInterface {
@@ -81,4 +82,9 @@ export interface UserInterface {
   description?: string;
   photo?: string;
   role: RoleInterface;
+}
+
+export interface JwtUserInterface {
+  id?: string;
+  email?: string;
 }
